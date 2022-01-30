@@ -3,15 +3,12 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { Text, TouchableOpacity, StyleSheet, Image, View} from "react-native"
 
 import HomeScreen from "../src/screens/HomeScreen";
-import PortfolioScreen from "../src/screens/PortfolioScreen";
 import SettingsScreen from "../src/screens/SettingsScreen";
-import StockScreen from "../src/screens/StockScreen";
-import WatchlistScreen from "../src/screens/WatchlistScreen";
 
 
 import HomeIcon from "../assets/icons/home.png"
 
-import  { WatchlistStack, PortfolioStack, CoinInfoStack } from "./StackNavigation"
+import  { WatchlistStack, PortfolioStack, CoinInfoStack, LogInStack } from "./StackNavigation"
 
 const Tab = createBottomTabNavigator()
 
@@ -29,6 +26,22 @@ const Tabs = () => {
         }
         }
         >
+            <Tab.Screen name="LogIn" component={LogInStack} options={{
+                tabBarIcon: ({focused})=>(
+                <View style={styles.bar}>
+                    <Image 
+                        source={HomeIcon}
+                        resizeMode='contain'
+                        style={{
+                            width: 30, 
+                            height: 30,
+                            tintColor: focused ? 'red' : 'black'
+                        }}
+                    />
+                </View>
+                ),
+            }} />
+
             <Tab.Screen name="Home" component={HomeScreen} options={{
                 tabBarIcon: ({focused})=>(
                 <View style={styles.bar}>

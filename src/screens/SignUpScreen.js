@@ -1,13 +1,15 @@
 import React from "react";
-import { View, Text, StyleSheet } from "react-native";
+import { View, Text, StyleSheet, Button } from "react-native";
 
-console.log(process.env.TEST_API_KEY)
 
-const HomeScreen = () => {
-
+const SignUpScreen = ({ navigation }) => {
   return(
     <View style={styles.container}>
-      <Text style={styles.text}>Home Screen</Text>
+      <Text style={styles.text}>Register Screen</Text>
+      <Button
+        title="Register"
+        onPress={() => navigation.navigate("LogInScreen")} 
+      />
     </View>
 
   )
@@ -28,4 +30,4 @@ const styles = StyleSheet.create({
 
 })
 
-export default HomeScreen;
+export default SignUpScreen;
