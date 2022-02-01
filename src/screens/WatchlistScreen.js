@@ -7,6 +7,10 @@ const WatchlistScreen = ({ navigation }) => {
     <View style={styles.container}>
       <Text style={styles.text}>Watchlist Screen</Text>
       <Button
+        title="Go to Coininformation"
+        onPress={() => navigation.navigate("CoinInfo")}
+      />
+      <Button
         title="Add to Watchlist"
         onPress={() => navigation.navigate("NewWatchlist")} 
       />

@@ -2,9 +2,6 @@ import React from "react";
 import { View, Text, StyleSheet, Button } from "react-native";
 
 
-
-  
-
 const StockScreen = ({ navigation }) => {
 
   return(
@@ -13,6 +10,10 @@ const StockScreen = ({ navigation }) => {
       <Button
         title="Go to Coininformation"
         onPress={() => navigation.navigate("CoinInfo")}
+      />
+      <Button
+        title="Go to Watchlist"
+        onPress={() => navigation.navigate("WatchlistScreen")}
       />
     </View>
 

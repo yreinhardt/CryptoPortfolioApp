@@ -12,6 +12,8 @@ import CoinInfoScreen from "../src/screens/CoinInfoScreen";
 import StockScreen from "../src/screens/StockScreen";
 
 import HomeScreen from "../src/screens/HomeScreen";
+import SettingsScreen from "../src/screens/SettingsScreen"
+
 import LogInScreen from "../src/screens/LogInScreen";
 import SignUpScreen from "../src/screens/SignUpScreen";
 
@@ -30,6 +32,15 @@ const screenOptionStyle = {
     },
 }
 
+const HomeStack = () => {
+  return (
+    <Stack.Navigator screenOptions={screenOptionStyle}>
+      <Stack.Screen name="HomeScreen" component={HomeScreen} />
+      <Stack.Screen name="SettingsScreen" component={SettingsScreen} />
+    </Stack.Navigator>
+  );
+}
+
 
 const LogInStack = () => {
   return (
@@ -40,32 +51,25 @@ const LogInStack = () => {
   );
 }
 
-const WatchlistStack = () => {
-  return (
-    <Stack.Navigator screenOptions={screenOptionStyle}>
-      <Stack.Screen name="StockScreen" component={WatchlistScreen} />
-      <Stack.Screen name="NewWatchlist" component={NewWatchlistScreen} />
-    </Stack.Navigator>
-  );
-}
-
 const PortfolioStack = () => {
   return (
     <Stack.Navigator screenOptions={screenOptionStyle}>
-      <Stack.Screen name="StockScreen" component={PortfolioScreen} />
+      <Stack.Screen name="PortfolioScreen" component={PortfolioScreen} />
       <Stack.Screen name="NewPortfolio" component={NewPortfolioScreen} />
     </Stack.Navigator>
   );
 }
 
-const CoinInfoStack = () => {
+const StockStack = () => {
     return (
       <Stack.Navigator screenOptions={screenOptionStyle}>
         <Stack.Screen name="StockScreen" component={StockScreen} />
         <Stack.Screen name="CoinInfo" component={CoinInfoScreen} />
+        <Stack.Screen name="WatchlistScreen" component={WatchlistScreen} />
+        <Stack.Screen name="NewWatchlist" component={NewWatchlistScreen} />
       </Stack.Navigator>
     );
   }
 
 
-export { WatchlistStack, PortfolioStack, CoinInfoStack, LogInStack };
+export { HomeStack, PortfolioStack, StockStack, LogInStack };

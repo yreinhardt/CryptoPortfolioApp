@@ -2,13 +2,12 @@ import React from 'react';
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { Text, TouchableOpacity, StyleSheet, Image, View} from "react-native"
 
-import HomeScreen from "../src/screens/HomeScreen";
-import SettingsScreen from "../src/screens/SettingsScreen";
-
-
 import HomeIcon from "../assets/icons/home.png"
+import LoginIcon from "../assets/icons/login.png"
+import StockIcon from "../assets/icons/stock.png"
+import PortfolioIcon from "../assets/icons/portfolio.png"
 
-import  { WatchlistStack, PortfolioStack, CoinInfoStack, LogInStack } from "./StackNavigation"
+import  { HomeStack, PortfolioStack, StockStack, LogInStack } from "./StackNavigation"
 
 const Tab = createBottomTabNavigator()
 
@@ -26,23 +25,7 @@ const Tabs = () => {
         }
         }
         >
-            <Tab.Screen name="LogIn" component={LogInStack} options={{
-                tabBarIcon: ({focused})=>(
-                <View style={styles.bar}>
-                    <Image 
-                        source={HomeIcon}
-                        resizeMode='contain'
-                        style={{
-                            width: 30, 
-                            height: 30,
-                            tintColor: focused ? 'red' : 'black'
-                        }}
-                    />
-                </View>
-                ),
-            }} />
-
-            <Tab.Screen name="Home" component={HomeScreen} options={{
+            <Tab.Screen name="Home" component={HomeStack} options={{
                 tabBarIcon: ({focused})=>(
                 <View style={styles.bar}>
                     <Image 
@@ -59,11 +42,11 @@ const Tabs = () => {
             }} />
             
 
-            <Tab.Screen name="Stock" component={CoinInfoStack} options={{
+            <Tab.Screen name="Stock" component={StockStack} options={{
                 tabBarIcon: ({focused})=>(
                 <View style={styles.bar}>
                     <Image 
-                        source={HomeIcon}
+                        source={StockIcon}
                         resizeMode='contain'
                         style={{
                             width: 30, 
@@ -78,7 +61,7 @@ const Tabs = () => {
                 tabBarIcon: ({focused})=>(
                 <View style={styles.bar}>
                     <Image 
-                        source={HomeIcon}
+                        source={PortfolioIcon}
                         resizeMode='contain'
                         style={{
                             width: 30, 
@@ -90,27 +73,11 @@ const Tabs = () => {
                 ),
             }} />
 
-            <Tab.Screen name="Watchlist" component={WatchlistStack} options={{
+            <Tab.Screen name="LogIn" component={LogInStack} options={{
                 tabBarIcon: ({focused})=>(
                 <View style={styles.bar}>
                     <Image 
-                        source={HomeIcon}
-                        resizeMode='contain'
-                        style={{
-                            width: 30, 
-                            height: 30,
-                            tintColor: focused ? 'red' : 'black'
-                        }}
-                    />
-                </View>
-                ),
-            }} />
-
-            <Tab.Screen name="Settings" component={SettingsScreen} options={{
-                tabBarIcon: ({focused})=>(
-                <View style={styles.bar}>
-                    <Image 
-                        source={HomeIcon}
+                        source={LoginIcon}
                         resizeMode='contain'
                         style={{
                             width: 30, 

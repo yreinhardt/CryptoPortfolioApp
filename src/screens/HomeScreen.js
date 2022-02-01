@@ -1,13 +1,17 @@
 import React from "react";
-import { View, Text, StyleSheet } from "react-native";
+import { View, Text, StyleSheet, Button } from "react-native";
 
 console.log(process.env.TEST_API_KEY)
 
-const HomeScreen = () => {
+const HomeScreen = ({navigation}) => {
 
   return(
     <View style={styles.container}>
       <Text style={styles.text}>Home Screen</Text>
+      <Button
+        title="Go to Settings"
+        onPress={() => navigation.navigate("SettingsScreen")} 
+      />
     </View>
 
   )
