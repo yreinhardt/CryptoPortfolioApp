@@ -18,9 +18,11 @@ const Tabs = () => {
             tabBarShowLabel: false,
             headerShown: false,
             tabBarStyle: {
-                height: 100,
+                height: 95,
                 backgroundColor: '#7bbdd9',
-                borderTopColor: "transparent"
+                borderTopColor: "transparent",
+                width: '100%',
+                borderRadius: 5
             }
         }
         }
