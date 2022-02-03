@@ -64,7 +64,7 @@ const StockStack = () => {
     return (
       <Stack.Navigator screenOptions={screenOptionStyle}>
         <Stack.Screen name="StockScreen" component={StockScreen} />
-        <Stack.Screen name="CoinInfo" component={CoinInfoScreen} />
+        <Stack.Screen name="CoinInfoScreen" component={CoinInfoScreen} />
         <Stack.Screen name="WatchlistScreen" component={WatchlistScreen} />
         <Stack.Screen name="NewWatchlist" component={NewWatchlistScreen} />
       </Stack.Navigator>

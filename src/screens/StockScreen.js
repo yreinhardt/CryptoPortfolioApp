@@ -1,14 +1,54 @@
-import React from "react";
-import { View, Text, StyleSheet, Button,TouchableOpacity, TextInput, Image } from "react-native";
+import React, {useState, useEffect} from "react";
+import { View, Text, StyleSheet, TouchableWithoutFeedback,TouchableOpacity, TextInput, FlatList } from "react-native";
+
+import MarketCoins from "../components/MarketCoins";
+
 
 const StockScreen = ({ navigation }) => {
+  const [coins, setCoins] = useState([]);
+  const [refresh, setRefresh] = useState(false); // handle flatlist refresh
+
+  /*
+  const [search, setSearch] = useState(""); // search coins
+
+  textinput
+  onChangeText={(text) => text && setSearch(text)}  
+
+  flatlist
+          data={coins.filter(
+          (coin) =>
+            coin.name.toLowerCase().includes(search.toLocaleLowerCase()) ||
+            coin.symbol.toLocaleLowerCase().includes(search.toLocaleLowerCase())
+        )}
+  */ 
+
+  const fetchCoinData = async () => {
+    const res = await fetch(
+      "https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=100&page=1&sparkline=false"
+    );
+    const data = await res.json();
+    console.log(data)
+    setCoins(data);
+  };
+
+  useEffect(() => {
+    fetchCoinData();
+  }, []);
+
+
+
 
   return(
     <View style={styles.container}>
+      <View style={styles.titleHeader}>
+        <Text style={styles.title}>Cryptocurrency</Text>
+      </View>
+
       <View style={styles.headerContainer} >
         <TextInput 
             placeholder="Search Coin..." 
-            style={styles.input} />
+            style={styles.input}
+             />
 
         <TouchableOpacity
           style={styles.button}
@@ -16,26 +56,34 @@ const StockScreen = ({ navigation }) => {
         >
           <Text style={styles.buttonText}>Watchlist</Text>
         </TouchableOpacity>
-
       </View>
 
-
-      <View style={styles.contentContainer}>
-        <Text style={styles.text}>Stock Screen</Text>
-        <Button
-          title="Go to Coininformation"
-          onPress={() => navigation.navigate("CoinInfo")}
-        />
-      </View>
+      <FlatList
+        style={styles.list}
+        data={coins}
+        keyExtractor={coins.name}
+        showsVerticalScrollIndicator={false}
+        renderItem={({ item }) => <TouchableOpacity onPress={() => navigation.navigate('CoinInfoScreen', {coinInformation: item})}>
+          <MarketCoins coin={item}/>
+          </TouchableOpacity> }
+        refreshing={refresh}
+        onRefresh={async () => {
+          setRefresh(true);
+          await fetchCoinData();
+          setRefresh(false);
+        }}
+      />
     </View>
-
   )
 }
+
+
 
 const styles = StyleSheet.create({
   container:{
     flex: 1,
-    backgroundColor: '#f5f5f5' // smokewhite
+    backgroundColor: 'whitesmoke',
+    alignItems: "center",
   },
   contentContainer: {
     flex:1,
@@ -44,32 +92,49 @@ const styles = StyleSheet.create({
   },
   headerContainer: {
     flexDirection: "row",
-    justifyContent:'space-evenly',
-    marginTop: 80
+    marginTop: 10
   },
   input:{
-    width: '60%',
-    height: 55,
+    width: '70%',
+    height: 45,
     backgroundColor: 'white',
-    padding: 15,
+    padding: 10,
     borderRadius: 5,
-    marginLeft:10
+    marginLeft: 2,
+    borderColor: 'blue',
+    borderWidth: 1
     
   },
   button:{
     backgroundColor: "white",
-    width: '30%',
-    padding: 20,
+    width: '25%',
+    padding: 15,
     borderRadius: 5,
     alignItems: 'center',
-    height: 55,
-    marginRight: 10,
-    marginLeft: 5
+    height: 45,
+    marginRight: 2,
+    marginLeft: 5,
+    borderColor: 'blue',
+    borderWidth: 1
 
   },
   buttonText:{
     color: 'black',
     fontSize: 12
+  },
+  list: {
+    width: "100%",
+  },
+  titleHeader: {
+    flexDirection: "row",
+    alignItems:'center',
+    marginTop: 40
+  },
+  title: {
+    fontSize: 20,
+    color: "black",
+    marginTop: 10,
+    fontWeight: 'bold'
   },
   text: {
     color: '#7bbdd9', 

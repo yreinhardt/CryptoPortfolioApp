@@ -1,29 +1,27 @@
 import React from "react";
-import { View, Text, StyleSheet } from "react-native";
+import { View, Text, StyleSheet, Image } from "react-native";
 
 
-const CoinInfoScreen = () => {
+const CoinInfoScreen = ({ route, navigation }) => {
+  const { coinInformation } = route.params // passing down data from stockscreen through coininfoscreen 
+
+  //console.log(coinInformation)
   return(
     <View style={styles.container}>
-      <Text style={styles.text}>CoinInfo Screen</Text>
+      <Text>itemId: {JSON.stringify(coinInformation)}</Text>
     </View>
-
   )
 }
 
 const styles = StyleSheet.create({
-  container:{
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#f5f5f5' // smokewhite
+container: {
+  flex: 1, 
+  backgroundColor: "whitesmoke",
+  margin: 10,
+  justifyContent: 'center',
+  alignItems: 'center'
   },
-  text: {
-    color: '#7bbdd9', 
-    fontWeight: 'bold',
-    fontSize: 30,
-  }
-
 })
+
 
 export default CoinInfoScreen;
