@@ -1,28 +1,28 @@
 import React from "react";
 import { View, Text, StyleSheet, Image } from "react-native";
 
-
-const MarketCoins = ({ coin }) => (
+const MarketEcosystems = ({ ecosystem }) => (
     
   <View style={styles.containerItem}>
-        <View style={styles.coinName}>
-            <Image source={{ uri: coin.image }} style={styles.image} />
+        <View style={styles.ecosystemName}>
+        <Image source={{ uri: ecosystem.top_3_coins[0] }} style={styles.image} />
+                <Image source={{ uri: ecosystem.top_3_coins[1] }} style={styles.image} />
+                <Image source={{ uri: ecosystem.top_3_coins[2] }} style={styles.image} />
             <View style={styles.containerNames}>
-                <Text style={styles.text}>{coin.name}</Text>
-                <Text style={styles.textSymbol}>{coin.symbol}</Text>
+                <Text style={styles.text}>{ecosystem.name}</Text>
             </View>
         </View>
         <View>
-        <Text style={styles.textPrice}>${new Intl.NumberFormat('de-DE').format(coin.current_price)}</Text>
+        <Text style={styles.textPrice}>${new Intl.NumberFormat('de-DE').format(ecosystem.market_cap.toFixed(0))}</Text>
         <Text
             style={[
             styles.pricePercentage,
-            coin.price_change_percentage_24h > 0
+            ecosystem.price_change_percentage_24h > 0
                 ? styles.priceUp
                 : styles.priceDown,
             ]}
         >
-            {coin.price_change_percentage_24h.toFixed(2)}%
+            {ecosystem.market_cap_change_24h.toFixed(2)}%
         </Text>
         </View>
   </View>
@@ -40,8 +40,10 @@ const styles = StyleSheet.create({
   },
   containerNames: {
     marginLeft: 10,
+    marginRight: 0,
+    width: 100,
   },
-  coinName: {
+  ecosystemName: {
     flexDirection: "row",
   },
   text: {
@@ -70,4 +72,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default MarketCoins;
+export default MarketEcosystems;

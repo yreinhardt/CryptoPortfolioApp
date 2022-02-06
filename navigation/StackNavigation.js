@@ -17,12 +17,15 @@ import SettingsScreen from "../src/screens/SettingsScreen"
 import LogInScreen from "../src/screens/LogInScreen";
 import SignUpScreen from "../src/screens/SignUpScreen";
 
+import ExchangeScreen from "../src/screens/ExchangeScreen";
+import EcosystemScreen from "../src/screens/EcosystemScreen"
+
+
 const Stack = createStackNavigator();
-
-
 
 // hide header, title color transparent, show back navigation button only
 const screenOptionStyle = {
+    animationEnabled: false, 
     headerShown: true,
     headerTransparent:true,
     headerBackTitle: "Back",
@@ -60,10 +63,15 @@ const PortfolioStack = () => {
   );
 }
 
+// dont allow back button for exchange, ecosys and stockscreen for navigation
+// create tabNav behavior in Stack
+
 const StockStack = () => {
     return (
       <Stack.Navigator screenOptions={screenOptionStyle}>
-        <Stack.Screen name="StockScreen" component={StockScreen} />
+        <Stack.Screen name="StockScreen" component={StockScreen} options={{headerLeft: (props) => null }} />
+        <Stack.Screen name="ExchangeScreen" component={ExchangeScreen} options={{headerLeft: (props) => null }}/>
+        <Stack.Screen name="EcosystemScreen" component={EcosystemScreen} options={{headerLeft: (props) => null }}/>
         <Stack.Screen name="CoinInfoScreen" component={CoinInfoScreen} />
         <Stack.Screen name="WatchlistScreen" component={WatchlistScreen} />
         <Stack.Screen name="NewWatchlist" component={NewWatchlistScreen} />

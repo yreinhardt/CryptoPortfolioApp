@@ -1,8 +1,6 @@
 import React from "react";
 import { View, Text, StyleSheet, Button } from "react-native";
 
-console.log(process.env.TEST_API_KEY)
-
 const HomeScreen = ({navigation}) => {
 
   return(
@@ -11,11 +9,13 @@ const HomeScreen = ({navigation}) => {
       <Button
         title="Go to Settings"
         onPress={() => navigation.navigate("SettingsScreen")} 
-      />
+      /> 
     </View>
 
   )
 }
+
+
 
 const styles = StyleSheet.create({
   container:{
