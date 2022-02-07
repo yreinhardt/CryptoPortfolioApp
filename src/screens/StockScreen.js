@@ -37,7 +37,9 @@ const StockScreen = ({ navigation }) => {
     fetchCoinData();
   }, []);
 
-//onFocus={() =>  })}
+
+
+
   return(
     <View style={styles.container}>
       <HeaderStock/>
@@ -48,8 +50,14 @@ const StockScreen = ({ navigation }) => {
         showsVerticalScrollIndicator={false}
         renderItem={({ item }) => 
           <TouchableOpacity 
-            onPress={() => navigation.navigate('CoinInfoScreen', {coinInformation: item})}
-            >
+            onPress={() => navigation.navigate('CoinInfoScreen',
+             {
+               coinInformation: {
+                id: item.id,
+                name: item.name,
+                symbol: item.symbol,
+                image: item.image}
+            })}>
             <MarketCoins coin={item}/>
           </TouchableOpacity> }
         refreshing={refresh}
