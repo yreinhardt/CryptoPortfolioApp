@@ -1,6 +1,6 @@
 import React from "react";
 import { View, Text, StyleSheet, Image } from "react-native";
-
+import { COLORS } from "../../constants/theme"
 
 const MarketCoins = ({ coin }) => (
     
@@ -13,7 +13,7 @@ const MarketCoins = ({ coin }) => (
             </View>
         </View>
         <View>
-        <Text style={styles.textPrice}>${new Intl.NumberFormat('de-DE').format(coin.current_price)}</Text>
+        <Text style={styles.textPrice}>${new Intl.NumberFormat('de-DE').format(coin.current_price.toFixed(2))}</Text>
         <Text
             style={[
             styles.pricePercentage,
@@ -30,13 +30,12 @@ const MarketCoins = ({ coin }) => (
 
 const styles = StyleSheet.create({
   containerItem: {
-    backgroundColor: "whitesmoke",
+    backgroundColor: COLORS.surface,
     padding: 10,
     flexDirection: "row",
     justifyContent: "space-between",
-    borderBottomColor: 'blue',
-    borderBottomWidth: 1,
     margin: 2,
+    borderRadius: 5
   },
   containerNames: {
     marginLeft: 10,
@@ -45,27 +44,27 @@ const styles = StyleSheet.create({
     flexDirection: "row",
   },
   text: {
-    color: "black",
+    color: COLORS.onSurface,
   },
   textPrice: {
-    color: "black",
+    color: COLORS.onSurface,
     fontWeight: "bold",
   },
   pricePercentage: {
     textAlign: "right",
   },
   priceUp: {
-    color: "#00B589",
+    color: COLORS.priceUp,
   },
   priceDown: {
-    color: "#fc4422",
+    color: COLORS.priceDown,
   },
   image: {
     width: 30,
     height: 30,
   },
   textSymbol: {
-    color: "#434343",
+    color: COLORS.onSurface,
     textTransform: "uppercase",
   },
 });

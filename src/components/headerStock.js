@@ -1,6 +1,8 @@
 import React from "react";
 import { View, Text, StyleSheet, TouchableOpacity, TextInput } from "react-native";
 import { useNavigation } from '@react-navigation/native';
+import { COLORS } from "../../constants/theme"
+import { ColorSpace } from "react-native-reanimated";
 
 const HeaderStock = () => {
   const navigation = useNavigation(); // render component anywhere without passing in a navigation prop explicitly 
@@ -16,6 +18,7 @@ const HeaderStock = () => {
             <View style={styles.itemsContainer}>
                 <TextInput 
                     placeholder="Search Coin..." 
+                    placeholderTextColor={COLORS.onSurface}
                     style={styles.input}
                     />
 
@@ -58,9 +61,10 @@ const HeaderStock = () => {
 const styles = StyleSheet.create({
   container:{
     flex: 1,
-    backgroundColor: 'whitesmoke',
+    backgroundColor: COLORS.background,
     alignItems: "center",
     height: '15%',
+    width: '100%',
   },
 
 headerContainer: {
@@ -76,41 +80,43 @@ headerContainer: {
   input:{
     width: '70%',
     height: 45,
-    backgroundColor: 'white',
+    backgroundColor: COLORS.surface,
     padding: 10,
     borderRadius: 5,
     borderColor: 'blue',
-    borderWidth: 1,
-    marginHorizontal: 2
+    borderWidth: 2,
+    marginHorizontal: 2,
+    color: COLORS.onSurface,
     
   },
   button:{
-    backgroundColor: "white",
+    backgroundColor: COLORS.surface,
     width: '25%',
     padding: 15,
     borderRadius: 5,
     alignItems: 'center',
     height: 45,
     borderColor: 'blue',
-    borderWidth: 1,
+    borderWidth: 2,
     marginHorizontal: 2
 
   },
   buttonNav:{
-    backgroundColor: "white",
+    backgroundColor: COLORS.surface,
     width: '30%',
     padding: 15,
     borderRadius: 5,
     height: 45,
     borderColor: 'blue',
-    borderWidth: 1,
+    borderWidth: 2,
     marginHorizontal: 5,
     alignItems: 'center'
 
   },
   buttonText:{
-    color: 'black',
-    fontSize: 12
+    color: COLORS.onSurface,
+    fontSize: 12,
+
   },
   titleHeader: {
     flexDirection: "row",
@@ -121,7 +127,8 @@ headerContainer: {
     fontSize: 20,
     color: "black",
     marginTop: 10,
-    fontWeight: 'bold'
+    fontWeight: 'bold',
+    color: COLORS.onSurface
   },
 })
 

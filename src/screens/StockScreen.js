@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from "react";
 import { View, StyleSheet,TouchableOpacity, FlatList } from "react-native";
-
+import { COLORS } from "../../constants/theme";
 
 import HeaderStock from "../components/headerStock";
 import MarketCoins from "../components/MarketCoins"
@@ -26,11 +26,16 @@ const StockScreen = ({ navigation }) => {
   */ 
 
   const fetchCoinData = async () => {
-    const res = await fetch(
-      "https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=100&page=1&sparkline=false"
-    );
-    const data = await res.json();
-    setCoins(data);
+    try{
+      const res = await fetch(
+        "https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=100&page=1&sparkline=false"
+      );
+      const data = await res.json();
+      setCoins(data);
+    } catch (err) {
+      console.log(err)
+    }
+
   };
 
   useEffect(() => {
@@ -56,7 +61,8 @@ const StockScreen = ({ navigation }) => {
                 id: item.id,
                 name: item.name,
                 symbol: item.symbol,
-                image: item.image}
+                image: item.image,
+                currentPrice: item.current_price}
             })}>
             <MarketCoins coin={item}/>
           </TouchableOpacity> }
@@ -77,7 +83,7 @@ const StockScreen = ({ navigation }) => {
 const styles = StyleSheet.create({
   container:{
     flex: 1,
-    backgroundColor: 'whitesmoke',
+    backgroundColor: COLORS.background,
     alignItems: "center",
   },
   list: {

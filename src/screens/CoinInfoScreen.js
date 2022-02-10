@@ -1,22 +1,10 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { View, Text, StyleSheet, Image, ScrollView} from "react-native";
+import { COLORS } from "../../constants/theme";
 import Accordion from "../components/Accordion";
 
 const CoinInfoScreen = ({ route }) => {
   const { coinInformation } = route.params // passing down data from stockscreen through coininfoscreen 
-  const [coinInfo, setCoinInfo] = useState("")
-
-  const fetchCoinInfo = async () => {
-    const res = await fetch(
-      `https://api.coingecko.com/api/v3/coins/${coinInformation.id}?localization=false`
-    );
-    const data = await res.json();
-    setCoinInfo(data);
-  };
-
-  useEffect(() => {
-    fetchCoinInfo();
-  }, []);
 
   return(
 
@@ -27,10 +15,11 @@ const CoinInfoScreen = ({ route }) => {
         <View style={styles.overview}>
           <Image source={{ uri: coinInformation.image }} style={styles.image}/>
         </View>
+        <Text style={styles.currentPriceText}>{new Intl.NumberFormat('de-DE').format(coinInformation.currentPrice)}$</Text>
         <ScrollView style={styles.detailContainer}>
-            <Accordion title='Performance' coinData= {coinInfo}/>
-            <Accordion title='Social Insights' coinData= {coinInfo}/>
-            <Accordion title='Description' coinData= {coinInfo}/>
+          <Accordion title='Performance' coinID= {coinInformation.id} identifier = 'performance'/>
+          <Accordion title='Social Insights' coinID= {coinInformation.id} identifier = 'socialInsights'/>
+          <Accordion title='Description' coinID= {coinInformation.id} identifier = 'description'/> 
         </ScrollView>
     </View>
   )
@@ -39,7 +28,7 @@ const CoinInfoScreen = ({ route }) => {
 const styles = StyleSheet.create({
   container:{
     flex: 1,
-    backgroundColor: 'whitesmoke',
+    backgroundColor: COLORS.background,
     alignItems: "center" 
   },
   detailContainer:{
@@ -48,13 +37,13 @@ const styles = StyleSheet.create({
   titleHeader: {
     flexDirection: "row",
     alignItems:'center',
-    marginTop: 40
+    marginTop: 40,
   },
   title: {
     fontSize: 20,
-    color: "black",
     marginTop: 10,
-    fontWeight: 'bold'
+    fontWeight: 'bold',
+    color: COLORS.onSurface
   },
   overview: {
     flexDirection: "row",
@@ -65,6 +54,11 @@ const styles = StyleSheet.create({
     height: 60,
     marginVertical: 15
   },
+  currentPriceText:{
+    fontSize: 30,
+    fontWeight: 'bold',
+    color: COLORS.onSurface
+  }
 })
 
 

@@ -28,8 +28,8 @@ const screenOptionStyle = {
     animationEnabled: false, 
     headerShown: true,
     headerTransparent:true,
-    headerBackTitle: "Back",
-    headerBackTitleVisible: true,
+    //headerBackTitle: "back",
+    headerBackTitleVisible: false,
     headerTitleStyle: {
       color: 'transparent'
     },
