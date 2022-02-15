@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { View, Text, StyleSheet, TouchableOpacity, TextInput } from "react-native";
 import { useNavigation } from '@react-navigation/native';
 import { COLORS } from "../../constants/theme"
@@ -6,8 +6,7 @@ import { COLORS } from "../../constants/theme"
 const HeaderStock = () => {
   const navigation = useNavigation(); // render component anywhere without passing in a navigation prop explicitly 
 
-  const [description, setDescription] = useState({left: 'Symbol/Name', right: 'Price/24h'})
-  
+
   return(
     <View style={styles.container}>
 
@@ -30,42 +29,13 @@ const HeaderStock = () => {
                     <Text style={styles.buttonText}>Watchlist</Text>
                 </TouchableOpacity>
             </View>
-            <View style={styles.itemsContainer}>
-                <TouchableOpacity 
-                  style={styles.buttonNav}
-                  onPress={() => {
-                    navigation.navigate("StockScreen");
-                    setDescription({left: 'Symbol/Name', right: 'Price/24h'})
-                  }}
-                >
-                    <Text style={styles.buttonText}>Currency</Text>
-                </TouchableOpacity>
-
-                <TouchableOpacity 
-                  style={styles.buttonNav}
-                  onPress={() => {
-                    navigation.navigate("ExchangeScreen");
-                    setDescription({left:'test', right: 'test2'})
-                    }}>
-                    <Text style={styles.buttonText}>Exchanges</Text>
-                </TouchableOpacity>
-
-                <TouchableOpacity 
-                  style={styles.buttonNav}
-                  onPress={() => {
-                    navigation.navigate("EcosystemScreen");
-                    setDescription({left:'test3', right: 'test4'})
-                    }}> 
-                    <Text style={styles.buttonText}>Ecosystems</Text>
-                </TouchableOpacity>
-            </View>
             <View style={styles.itemsDescripton}>
               <View style={styles.leftContainer}>
-                <Text style={styles.headerText}>{description.left}</Text>
+                <Text style={styles.headerText}>Symbol/Name</Text>
               </View>
               
               <View style={styles.rightContainer}>
-                <Text style={styles.headerText}>{description.right}</Text>
+                <Text style={styles.headerText}>Price/24h</Text>
               </View>
           </View>
 
@@ -75,6 +45,8 @@ const HeaderStock = () => {
     </View>
   )
 }
+
+
 
 
 
@@ -97,6 +69,7 @@ headerContainer: {
     flexDirection: 'row',
     justifyContent: 'space-evenly',
     marginTop: 10,
+    marginHorizontal: 2
   },
   itemsDescripton:{
     backgroundColor: COLORS.surface,
@@ -106,11 +79,13 @@ headerContainer: {
     borderRadius: 5,
     padding:  5,
     marginTop: 10,
-    marginHorizontal: 2
+    marginHorizontal: 5,
+    marginBottom: 2
 
   },
   input:{
-    width: '70%',
+    //width: '70%',
+    flex: 1,
     height: 45,
     backgroundColor: COLORS.surface,
     padding: 10,
@@ -122,8 +97,9 @@ headerContainer: {
     
   },
   button:{
+    flex: 1/4,
     backgroundColor: COLORS.surface,
-    width: '25%',
+    //width: '25%',
     padding: 15,
     borderRadius: 5,
     alignItems: 'center',
@@ -133,22 +109,9 @@ headerContainer: {
     marginHorizontal: 2
 
   },
-  buttonNav:{
-    backgroundColor: COLORS.surface,
-    width: '30%',
-    padding: 15,
-    borderRadius: 5,
-    height: 45,
-    borderColor: 'blue',
-    borderWidth: 2,
-    marginHorizontal: 5,
-    alignItems: 'center'
-
-  },
   buttonText:{
     color: COLORS.onSurface,
     fontSize: 12,
-
   },
   headerText:{
     color: COLORS.onSurface,

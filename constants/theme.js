@@ -1,3 +1,5 @@
+import { Dimensions } from "react-native";
+
 export const COLORS = {
     background: '#121212',
     surface: '#2c2c2c',     // darkgrey
@@ -9,4 +11,8 @@ export const COLORS = {
     separatElement: 'grey',
     priceUp: '#00B589',
     priceDown: '#fc4422'
+};
+
+export const SCREEN ={
+    width: Dimensions.get('window').width
 };
