@@ -95,7 +95,7 @@ const Accordion = ({ title, coinID, identifier }) => {
                         </View>
                         <View style={styles.subTest}>
                             <Text style={styles.textCategory}>Ecosystem</Text>
-                            <Text style={styles.testTextRight}>{coinInfo.categories}</Text>
+                            <Text style={[styles.testTextRight, {flex:1/2}]}>{coinInfo.categories}</Text>
                         </View>
                         <View style={styles.subTest}>
                             <Text style={styles.textCategory}>Genisis Date</Text>

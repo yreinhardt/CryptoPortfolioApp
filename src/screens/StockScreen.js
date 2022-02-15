@@ -73,7 +73,6 @@ const StockScreen = ({ navigation }) => {
           setRefresh(false);
         }}
       /> 
-
     </View>
   )
 }
@@ -87,8 +86,9 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   list: {
+    //flex:1/2,
     width: "100%",
-    height: '45%'
+    height: '40%'
   },
 
 })

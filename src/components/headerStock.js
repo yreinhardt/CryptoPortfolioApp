@@ -1,12 +1,13 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { View, Text, StyleSheet, TouchableOpacity, TextInput } from "react-native";
 import { useNavigation } from '@react-navigation/native';
 import { COLORS } from "../../constants/theme"
-import { ColorSpace } from "react-native-reanimated";
 
 const HeaderStock = () => {
   const navigation = useNavigation(); // render component anywhere without passing in a navigation prop explicitly 
 
+  const [description, setDescription] = useState({left: 'Symbol/Name', right: 'Price/24h'})
+  
   return(
     <View style={styles.container}>
 
@@ -32,25 +33,44 @@ const HeaderStock = () => {
             <View style={styles.itemsContainer}>
                 <TouchableOpacity 
                   style={styles.buttonNav}
-                  onPress={() => navigation.navigate("StockScreen")}
+                  onPress={() => {
+                    navigation.navigate("StockScreen");
+                    setDescription({left: 'Symbol/Name', right: 'Price/24h'})
+                  }}
                 >
                     <Text style={styles.buttonText}>Currency</Text>
                 </TouchableOpacity>
 
                 <TouchableOpacity 
                   style={styles.buttonNav}
-                  onPress={() => navigation.navigate("ExchangeScreen")}>
+                  onPress={() => {
+                    navigation.navigate("ExchangeScreen");
+                    setDescription({left:'test', right: 'test2'})
+                    }}>
                     <Text style={styles.buttonText}>Exchanges</Text>
                 </TouchableOpacity>
 
                 <TouchableOpacity 
                   style={styles.buttonNav}
-                  onPress={() => navigation.navigate("EcosystemScreen")}> 
+                  onPress={() => {
+                    navigation.navigate("EcosystemScreen");
+                    setDescription({left:'test3', right: 'test4'})
+                    }}> 
                     <Text style={styles.buttonText}>Ecosystems</Text>
                 </TouchableOpacity>
             </View>
+            <View style={styles.itemsDescripton}>
+              <View style={styles.leftContainer}>
+                <Text style={styles.headerText}>{description.left}</Text>
+              </View>
+              
+              <View style={styles.rightContainer}>
+                <Text style={styles.headerText}>{description.right}</Text>
+              </View>
+          </View>
 
         </View>
+
 
     </View>
   )
@@ -60,22 +80,34 @@ const HeaderStock = () => {
 
 const styles = StyleSheet.create({
   container:{
-    flex: 1,
     backgroundColor: COLORS.background,
     alignItems: "center",
-    height: '15%',
+    //height: '50%',
     width: '100%',
   },
 
 headerContainer: {
     flexDirection: "column",
     flexWrap: "wrap",
-    marginTop: 10
+    width: '100%',
+    marginTop: 10,
+    //paddingTop: 10
   },
   itemsContainer:{
     flexDirection: 'row',
     justifyContent: 'space-evenly',
     marginTop: 10,
+  },
+  itemsDescripton:{
+    backgroundColor: COLORS.surface,
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    flexDirection: 'row',
+    borderRadius: 5,
+    padding:  5,
+    marginTop: 10,
+    marginHorizontal: 2
+
   },
   input:{
     width: '70%',
@@ -117,6 +149,21 @@ headerContainer: {
     color: COLORS.onSurface,
     fontSize: 12,
 
+  },
+  headerText:{
+    color: COLORS.onSurface,
+    fontSize: 12,
+    padding: 10,
+  },
+  leftContainer:{
+    flex: 1,
+    flexDirection: 'row',
+    justifyContent: 'flex-start',
+  },
+  rightContainer:{
+    flex: 1,
+    flexDirection: 'row',
+    justifyContent: 'flex-end',
   },
   titleHeader: {
     flexDirection: "row",
