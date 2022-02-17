@@ -19,18 +19,20 @@ const Portfolio = ({ coin }) => (
                 ? styles.priceUp
                 : styles.priceDown,
                 ]}>{coin.gain}%</Text>
+                <Text style={{fontSize:14, color: COLORS.onSurface}}>${new Intl.NumberFormat('de-DE').format(coin.price.toFixed(2))}</Text>
+
             </View>
            
         </View>
         <View style={styles.subContent}>
             <Text style={styles.textPrice}>${new Intl.NumberFormat('de-DE').format(coin.coinBalance.toFixed(2))}</Text>
             <Text style={styles.textPrice}>{new Intl.NumberFormat('de-DE').format(coin.coinsCount.toFixed(2))}</Text>
-            <Text style={styles.textPrice}>${new Intl.NumberFormat('de-DE').format(coin.price.toFixed(2))}</Text>
+            <Text style={styles.textPrice}>${new Intl.NumberFormat('de-DE').format(coin.pricePurchased.toFixed(2))}</Text>
         </View>
         <View style={styles.subContent}>
             <Text style={styles.description}>Balance</Text>
             <Text style={styles.description}>Coins</Text>
-            <Text style={styles.description}>Price</Text>
+            <Text style={styles.description}>Price purchased</Text>
         </View>
   </View>
 );

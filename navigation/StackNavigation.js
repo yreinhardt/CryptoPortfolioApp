@@ -7,7 +7,6 @@ import NewWatchlistScreen from "../src/screens/NewWatchlistScreen";
 import PortfolioScreen from "../src/screens/PortfolioScreen";
 import NewPortfolioScreen from "../src/screens/NewPortfolioScreen";
 
-
 import CoinInfoScreen from "../src/screens/CoinInfoScreen";
 import StockScreen from "../src/screens/StockScreen";
 
@@ -17,9 +16,8 @@ import SettingsScreen from "../src/screens/SettingsScreen"
 import LogInScreen from "../src/screens/LogInScreen";
 import SignUpScreen from "../src/screens/SignUpScreen";
 
-import ExchangeScreen from "../src/screens/ExchangeScreen";
-import EcosystemScreen from "../src/screens/EcosystemScreen"
-
+import AnalyticsScreen from "../src/screens/AnalyticsScreen"
+import PortfolioDetailsScreen from "../src/screens/PortfolioDetailsScreen";
 
 const Stack = createStackNavigator();
 
@@ -59,6 +57,8 @@ const PortfolioStack = () => {
     <Stack.Navigator screenOptions={screenOptionStyle}>
       <Stack.Screen name="PortfolioScreen" component={PortfolioScreen} />
       <Stack.Screen name="NewPortfolio" component={NewPortfolioScreen} />
+      <Stack.Screen name="Analytics" component={AnalyticsScreen} />
+      <Stack.Screen name="PortfolioDetail" component={PortfolioDetailsScreen} />
     </Stack.Navigator>
   );
 }
@@ -70,8 +70,6 @@ const StockStack = () => {
     return (
       <Stack.Navigator screenOptions={screenOptionStyle}>
         <Stack.Screen name="StockScreen" component={StockScreen} options={{headerLeft: (props) => null }} />
-        <Stack.Screen name="ExchangeScreen" component={ExchangeScreen} options={{headerLeft: (props) => null }}/>
-        <Stack.Screen name="EcosystemScreen" component={EcosystemScreen} options={{headerLeft: (props) => null }}/>
         <Stack.Screen name="CoinInfoScreen" component={CoinInfoScreen} />
         <Stack.Screen name="WatchlistScreen" component={WatchlistScreen} />
         <Stack.Screen name="NewWatchlist" component={NewWatchlistScreen} />

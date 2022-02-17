@@ -1,67 +1,17 @@
 import React from "react";
 import { View, Text, StyleSheet, FlatList, TouchableOpacity, Image } from "react-native";
-import { COLORS } from "../../constants/theme"
-import Portfolio from "../components/Portfolio";
-import { SCREEN } from "../../constants/theme"
+import { COLORS, SCREEN } from "../../constants/theme"
 import AddIcon from "../../assets/icons/addButton.png"
 import AnalyticsIcon from "../../assets/icons/analytics.png"
+import { PORTFOLIO, BALANCEGAIN, TOTALBALANCE } from "../../constants/dummyData"
+import PortfolioOverview from "../components/PortfolioOverview";
 
-const totalBalance = 6523.57
-const balanceGain = 238.50
-const dummyPortfolioData = 
-[
-  {
-    symbol: "BTC",
-    name: "Bitcoin",
-    coinBalance: 4500,
-    coinsCount: 1.45,
-    price: 38.500,
-    image: "https://assets.coingecko.com/coins/images/1/large/bitcoin.png?1547033579",
-    gain: 12.1
-  },
-  {
-    symbol: "ADA",
-    name: "Cardano",
-    coinBalance: 2300,
-    coinsCount: 665.32,
-    price: 823.43,
-    image: "https://assets.coingecko.com/coins/images/975/large/cardano.png?",
-    gain: -4.5
-  },
-  {
-    symbol: "ETH",
-    name: "Ethereum",
-    coinBalance: 12.860,
-    coinsCount: 8.97,
-    price: 7.64,
-    image: "https://assets.coingecko.com/coins/images/279/large/ethereum.png?1595348880",
-    gain: 37.3
-  },
-  {
-    symbol: "ETH",
-    name: "Ethereum",
-    coinBalance: 12.860,
-    coinsCount: 8.97,
-    price: 7.64,
-    image: "https://assets.coingecko.com/coins/images/279/large/ethereum.png?1595348880",
-    gain: 37.3
-  },
-]
+import FeedbackIcon from "../../assets/icons/feedback.png"
+import AlertIcon from "../../assets/icons/alerts.png"
+import AchievementIcon from "../../assets/icons/achievements.png"
+import RemoveIcon from "../../assets/icons/removeButton.png"
 
-/*
-<View style={styles.buttonContainer}>
-          <TouchableOpacity
-            style={styles.button}
-            title="Add Portfolio"
-            onPress={() => navigation.navigate("NewPortfolio")} 
-          >
-            <Image source={AnalyticsIcon} style={styles.image} />
-            <Text style={{color:'white', fontSize: 14, fontWeight: 'bold'}}>Analytics</Text>
-          </TouchableOpacity>
-
-*/
-
-const PortfolioScreen = ({ navigation }) => {
+const PortfolioDetailsScreen = ({ navigation }) => {
   return(
     <View style={styles.container}>
         <View style={styles.headerContainer}>
@@ -71,38 +21,90 @@ const PortfolioScreen = ({ navigation }) => {
           <Text style={{textAlign: 'left',fontSize: 14, fontWeight:'bold',padding:5, color: COLORS.onSurface}}>Your total balance</Text>
           <TouchableOpacity
             style={styles.buttonAnalytics}
-            title="Add Portfolio"
-            onPress={() => navigation.navigate("NewPortfolio")} 
+            onPress={() => navigation.navigate("Analytics")} 
           >
             <Image source={AnalyticsIcon} style={styles.imageAnalytics} />
           </TouchableOpacity>
           <View style={{flexDirection: 'row'}}>
-              <Text style={styles.balance}>${new Intl.NumberFormat('de-DE').format(totalBalance)}</Text>
+              <Text style={styles.balance}>${new Intl.NumberFormat('de-DE').format(TOTALBALANCE)}</Text>
               <Text style={[
                 styles.balanceChange,
-                balanceGain > 0
+                BALANCEGAIN > 0
                 ? styles.changeUp
                 : styles.changeDown,
-            ]}>${new Intl.NumberFormat('de-DE').format(balanceGain)} (15%)</Text>
+            ]}>${new Intl.NumberFormat('de-DE').format(BALANCEGAIN)} (15%)</Text>
           </View>
         </View>
-        <FlatList
-          style={styles.list}
-          data={dummyPortfolioData}
-          keyExtractor={dummyPortfolioData.name}
-          showsVerticalScrollIndicator={false}
-          renderItem={({ item }) => 
-              <Portfolio coin={item}/>}
-        /> 
-        <View>
+        <View style={styles.listContainer}>
+          <View style={styles.subHeaderContainer}>
+            <View style={{flex:1}}>
+              <Text style={[styles.subText, {alignSelf:'flex-start'}]} >Assets</Text>
+            </View>
+            <View style={{flex:1/2}}>
+              <TouchableOpacity
+              style={{flex:1}}
+              onPress={() => navigation.navigate("PortfolioDetail")} 
+              >
+                <Text style={[styles.subText, {alignSelf:'center'}]}>See details</Text>
+              </TouchableOpacity>
+            </View>
+          </View>
+          <FlatList
+            horizontal
+            style={styles.list}
+            data={PORTFOLIO}
+            keyExtractor={PORTFOLIO.name}
+            showsHorizontalScrollIndicator={false}
+            renderItem={({ item }) => 
+                <PortfolioOverview coin={item}/>}
+          />
+        </View>
+        <View style={styles.buttonContainer}>
+          <View style={styles.subButtonContent}>
+            <View style={styles.buttonContent}>
+              <TouchableOpacity
+                style={[styles.subButton, {borderWidth: 2, borderColor: 'blue'}]}
+              >
+                <Image source={AchievementIcon} style={styles.image} />
+                <Text style={{color:'white', fontSize: 10, fontWeight: 'bold'}}>Achievement</Text>
+              </TouchableOpacity>
+            </View>
+            <View style={styles.buttonContent}>
+              <TouchableOpacity
+                style={[styles.subButton, {borderWidth: 2, borderColor: 'blue'}]}
+              >
+                <Image source={AlertIcon} style={styles.image} />
+                <Text style={{color:'white', fontSize: 10, fontWeight: 'bold'}}>Alert</Text>
+              </TouchableOpacity>
+            </View>
+            <View style={styles.buttonContent}>
+              <TouchableOpacity
+                style={[styles.subButton, {borderWidth: 2, borderColor: 'blue'}]}
+              >
+                <Image source={FeedbackIcon} style={styles.image} />
+                <Text style={{color:'white', fontSize: 10, fontWeight: 'bold'}}>Feedback</Text>
+              </TouchableOpacity>
+            </View>
+            
+          </View>
+          <View style={{flex:1, justifyContent: 'center',
+                alignItems:'center', marginVertical: 20}}>
           <TouchableOpacity
             style={styles.button}
-            title="Add Portfolio"
             onPress={() => navigation.navigate("NewPortfolio")} 
           >
             <Image source={AddIcon} style={styles.image} />
             <Text style={{color:'white', fontSize: 14, fontWeight: 'bold'}}>Add Asset</Text>
           </TouchableOpacity>
+          <TouchableOpacity
+            style={styles.button}
+            onPress={() => navigation.navigate("NewPortfolio")} 
+          >
+            <Image source={RemoveIcon} style={styles.image} />
+            <Text style={{color:'white', fontSize: 14, fontWeight: 'bold'}}>Remove Asset</Text>
+          </TouchableOpacity>
+          </View>
+
         </View>
     
     </View>
@@ -113,7 +115,7 @@ const styles = StyleSheet.create({
   container:{
     backgroundColor: COLORS.background,
     alignItems: "center",
-    width: '100%',
+    width: SCREEN.width,
     flex:1
   },
   headerContainer: {
@@ -123,24 +125,69 @@ const styles = StyleSheet.create({
   overViewContainer:{
     backgroundColor: COLORS.surface,
     justifyContent: 'center',
-    marginVertical: 15,
+    marginVertical: 20,
     borderRadius: 5,
-    flex:1/3,
+    flex:1/2,
     width: '90%',
     borderColor: 'blue',
     borderWidth:2
   },
- 
+  listContainer:{
+    flex:0.6,
+    width: 0.9*SCREEN.width,
+    backgroundColor: COLORS.surface,
+    borderRadius: 5,
+    padding: 5
+  }, 
+  subHeaderContainer:{
+    flex:1/4,
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems:'center',
+  },
+  buttonContainer:{
+    flex:1, 
+    marginVertical: 20, 
+    width: 0.9*SCREEN.width,
+    justifyContent: 'center',
+    alignItems:'center',
+  },
   button:{
     flexDirection: 'row',
     justifyContent: 'center',
     alignItems:'center',
-    margin: 15,
+    marginVertical: 10,
     height: 60,
     width: 0.9*(SCREEN.width), // 90% width
     backgroundColor: COLORS.surface,
     borderColor: 'blue',
-    borderWidth:2
+    borderWidth:2,
+    borderRadius: 5,
+  },
+  subButtonContent:{
+    flex:0.6, 
+    borderRadius: 5,
+    flexDirection:'row',
+    width: 0.9*(SCREEN.width),
+    justifyContent: 'space-evenly',
+    alignItems:'center',
+    backgroundColor: COLORS.surface,
+
+  },
+  buttonContent:{
+    //borderWidth: 2, 
+    //borderColor: "white",
+    height: 0.15*(SCREEN.width),
+    width: 0.2*(SCREEN.width),
+    marginHorizontal: 5,
+    borderRadius: 5,
+
+  },
+  subButton:{
+    flex:1,
+    borderRadius: 5,
+    justifyContent: 'center',
+    alignItems:'center',
   },
   buttonAnalytics:{
     color: COLORS.onSurface,
@@ -176,7 +223,7 @@ const styles = StyleSheet.create({
   },
   list: {
     flex:1,
-    width: "90%",
+    padding: 5,
   },
   title: {
     fontSize: 20,
@@ -196,7 +243,15 @@ const styles = StyleSheet.create({
     height: 40,
     marginHorizontal: 2,
     tintColor: COLORS.onSurface
-  }
+  },
+  subText:{
+    flex:1,
+    color: 'white', 
+    marginBottom: 5, 
+    padding: 10,
+    fontWeight: 'bold', 
+    fontSize:14, 
+  },
 })
 
-export default PortfolioScreen;
+export default PortfolioDetailsScreen;
