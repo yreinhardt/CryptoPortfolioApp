@@ -4,7 +4,7 @@ import { createStackNavigator } from "@react-navigation/stack";
 import WatchlistScreen from "../src/screens/WatchlistScreen";
 import NewWatchlistScreen from "../src/screens/NewWatchlistScreen";
 
-import PortfolioScreen from "../src/screens/PortfolioScreen";
+import PortfolioDetailsScreen from "../src/screens/PortfolioDetailsScreen";
 import NewPortfolioScreen from "../src/screens/NewPortfolioScreen";
 
 import CoinInfoScreen from "../src/screens/CoinInfoScreen";
@@ -17,7 +17,9 @@ import LogInScreen from "../src/screens/LogInScreen";
 import SignUpScreen from "../src/screens/SignUpScreen";
 
 import AnalyticsScreen from "../src/screens/AnalyticsScreen"
-import PortfolioDetailsScreen from "../src/screens/PortfolioDetailsScreen";
+import PortfolioDetailsCoinScreen from "../src/screens/PortfolioDetailsCoinScreen";
+
+import PortfolioScreen from "../src/screens/PortfolioScreen"
 
 const Stack = createStackNavigator();
 
@@ -56,9 +58,10 @@ const PortfolioStack = () => {
   return (
     <Stack.Navigator screenOptions={screenOptionStyle}>
       <Stack.Screen name="PortfolioScreen" component={PortfolioScreen} />
+      <Stack.Screen name="PortfolioDetailsScreen" component={PortfolioDetailsScreen} />
       <Stack.Screen name="NewPortfolio" component={NewPortfolioScreen} />
       <Stack.Screen name="Analytics" component={AnalyticsScreen} />
-      <Stack.Screen name="PortfolioDetail" component={PortfolioDetailsScreen} />
+      <Stack.Screen name="PortfolioDetailsCoinScreen" component={PortfolioDetailsCoinScreen} />
     </Stack.Navigator>
   );
 }

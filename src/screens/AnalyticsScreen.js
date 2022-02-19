@@ -1,8 +1,8 @@
 import React, { useState } from "react";
-import { View, Text, StyleSheet, Dimensions, ScrollView, TouchableOpacity } from "react-native";
+import { View, Text, StyleSheet, SafeAreaView, ScrollView, TouchableOpacity } from "react-native";
 import { PORTFOLIO, BALANCEGAIN, TOTALBALANCE } from "../../constants/dummyData"
 import { COLORS, SCREEN } from "../../constants/theme"
-
+import Header from"../components/Header";
 import {
     LineChart,
     BarChart,
@@ -95,94 +95,94 @@ const AnalyticsScreen = () => {
 
 
   return(
-<ScrollView style={styles.scrollviewContainer}>
-    <View style={styles.container}>
-        <View style={styles.headerContainer}>
-                <Text style={styles.title}>Analytics</Text>
-        </View>
-        <View style={styles.chartContainer}>
-            <Text style={styles.subHeader}>Portfolio distribution (%)</Text>
-            <View style={{marginVertical:10}}>
-                <PieChart
-                    data={data}
-                    width={0.9*SCREEN.width}
-                    height={220}
-                    chartConfig={chartConfig}
-                    accessor={"balancePercentage"}
-                    avoidFalseZero={false}
-                    backgroundColor={COLORS.surface}
-                    paddingLeft={"15"}
-                    center={[10, 5]} 
-                />
-            </View>
-        </View>
+        <SafeAreaView style={styles.scrollviewContainer} >
+            <ScrollView style={styles.scrollviewContainer}>
+                <View style={styles.container}>
+                    <Header title="Analytics"/>
+                    <View style={styles.chartContainer}>
+                        <Text style={styles.subHeader}>Portfolio distribution (%)</Text>
+                        <View style={{marginVertical:10}}>
+                            <PieChart
+                                data={data}
+                                width={0.9*SCREEN.width}
+                                height={220}
+                                chartConfig={chartConfig}
+                                accessor={"balancePercentage"}
+                                avoidFalseZero={false}
+                                backgroundColor={COLORS.surface}
+                                paddingLeft={"15"}
+                                center={[10, 5]} 
+                            />
+                        </View>
+                    </View>
 
-        <View style={styles.buttonContainer}>
-            <TouchableOpacity 
-                style={styles.button}
-            >
-                <Text style={styles.buttonText}>Monthly</Text>
-            </TouchableOpacity>
-            <TouchableOpacity 
-                style={styles.button}
-            >
-                <Text style={styles.buttonText}>Daily</Text>
-            </TouchableOpacity>
-        </View>
-        <View style={styles.chartContainer}>
-            <Text style={styles.subHeader}>Performance (monthly)</Text>
-            <View style={{marginVertical:10}}>
-            <LineChart
-                data={dataLine}
-                width={0.9*SCREEN.width}
-                height={220}
-                yAxisLabel="$"
-                yAxisSuffix="k"
-                yAxisInterval={1} // optional, defaults to 1
-                verticalLabelRotation={90}
-                xLabelsOffset={-10}
-                chartConfig={{
-                    backgroundColor: COLORS.surface, //"#e26a00",
-                    backgroundGradientFrom: COLORS.surface,//"#fb8c00",
-                    backgroundGradientTo: COLORS.surface ,//"#ffa726",
-                    decimalPlaces: 2, // optional, defaults to 2dp
-                    color: (opacity = 1) => `rgba(255, 255, 255, ${opacity})`,
-                    labelColor: (opacity = 1) => `rgba(255, 255, 255, ${opacity})`,
-                    style: {
-                        borderRadius: 16
-                    },
-                    propsForDots: {
-                        r: "3", //dot size
-                        //strokeWidth: "2",
-                        //stroke: "transparent"
-                    }
-                }}
-                bezier
-                style={{
-                marginVertical: 8,
-                borderRadius: 16
-            }}
-        />
-            </View>
-        </View>
-        <View style={styles.chartContainer}>
-            <Text style={styles.subHeader}>Portfolio distribution (%)</Text>
-            <View style={{marginVertical:10}}>
-                <PieChart
-                    data={data}
-                    width={0.9*SCREEN.width}
-                    height={220}
-                    chartConfig={chartConfig}
-                    accessor={"balancePercentage"}
-                    avoidFalseZero={false}
-                    backgroundColor={COLORS.surface}
-                    paddingLeft={"15"}
-                    center={[10, 5]} 
-                />
-            </View>
-        </View>
-    </View>
-</ScrollView>
+                    <View style={styles.buttonContainer}>
+                        <TouchableOpacity 
+                            style={styles.button}
+                        >
+                            <Text style={styles.buttonText}>Monthly</Text>
+                        </TouchableOpacity>
+                        <TouchableOpacity 
+                            style={styles.button}
+                        >
+                            <Text style={styles.buttonText}>Daily</Text>
+                        </TouchableOpacity>
+                    </View>
+                    <View style={styles.chartContainer}>
+                        <Text style={styles.subHeader}>Performance (monthly)</Text>
+                        <View style={{marginVertical:10}}>
+                        <LineChart
+                            data={dataLine}
+                            width={0.9*SCREEN.width}
+                            height={220}
+                            yAxisLabel="$"
+                            yAxisSuffix="k"
+                            yAxisInterval={1} // optional, defaults to 1
+                            verticalLabelRotation={90}
+                            xLabelsOffset={-10}
+                            chartConfig={{
+                                backgroundColor: COLORS.surface, //"#e26a00",
+                                backgroundGradientFrom: COLORS.surface,//"#fb8c00",
+                                backgroundGradientTo: COLORS.surface ,//"#ffa726",
+                                decimalPlaces: 2, // optional, defaults to 2dp
+                                color: (opacity = 1) => `rgba(255, 255, 255, ${opacity})`,
+                                labelColor: (opacity = 1) => `rgba(255, 255, 255, ${opacity})`,
+                                style: {
+                                    borderRadius: 16
+                                },
+                                propsForDots: {
+                                    r: "3", //dot size
+                                    //strokeWidth: "2",
+                                    //stroke: "transparent"
+                                }
+                            }}
+                            bezier
+                            style={{
+                            marginVertical: 8,
+                            borderRadius: 16
+                        }}
+                    />
+                        </View>
+                    </View>
+                    <View style={styles.chartContainer}>
+                        <Text style={styles.subHeader}>Portfolio distribution (%)</Text>
+                        <View style={{marginVertical:10}}>
+                            <PieChart
+                                data={data}
+                                width={0.9*SCREEN.width}
+                                height={220}
+                                chartConfig={chartConfig}
+                                accessor={"balancePercentage"}
+                                avoidFalseZero={false}
+                                backgroundColor={COLORS.surface}
+                                paddingLeft={"15"}
+                                center={[10, 5]} 
+                            />
+                        </View>
+                    </View>
+                </View>
+            </ScrollView>
+        </SafeAreaView>
   )
 }
 
@@ -215,7 +215,7 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         borderRadius: 15,
         backgroundColor: COLORS.surface,
-        marginVertical: 10,
+        marginBottom: 10,
         //borderWidth:2,
         //borderColor: 'white',
     },
@@ -252,7 +252,7 @@ const styles = StyleSheet.create({
     },
     headerContainer: {
         alignItems:'center',
-        marginTop: 40
+        //marginTop: 40
     },
 
 })

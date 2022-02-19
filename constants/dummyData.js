@@ -64,3 +64,27 @@ export const PORTFOLIO =
   },
 
 ]
+
+export const USERPORTFOLIO = 
+[
+  {
+    name: "High Risk High Reward Portfolio",
+    balance: 1580.18,
+    creationDate: "07-01-2022"
+  },
+  {
+    name: "Portfolio at Binance",
+    balance: 461.50,
+    creationDate:  "14-11-2021"
+  },
+  {
+    name: "Hodl Portfolio",
+    balance: 8954.92,
+    creationDate: "05-01-2019"
+  },
+  {
+    name: "Portfolio at Binance",
+    balance: 461.50,
+    creationDate:  "14-11-2021"
+  },
+]
