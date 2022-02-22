@@ -1,7 +1,7 @@
 import React from "react";
 import { View, Text, StyleSheet, TouchableOpacity, TextInput } from "react-native";
 import { useNavigation } from '@react-navigation/native';
-import { COLORS } from "../../constants/theme"
+import { COLORS, SCREEN } from "../../constants/theme"
 
 const HeaderStock = () => {
   const navigation = useNavigation(); // render component anywhere without passing in a navigation prop explicitly 
@@ -55,13 +55,13 @@ const styles = StyleSheet.create({
     backgroundColor: COLORS.background,
     alignItems: "center",
     //height: '50%',
-    width: '100%',
+    width: 0.9*SCREEN.width
   },
 
 headerContainer: {
     flexDirection: "column",
     flexWrap: "wrap",
-    width: '100%',
+    width: 0.9*SCREEN.width,
     marginTop: 10,
     //paddingTop: 10
   },
@@ -79,7 +79,6 @@ headerContainer: {
     borderRadius: 5,
     padding:  5,
     marginTop: 10,
-    marginHorizontal: 5,
     marginBottom: 2
 
   },

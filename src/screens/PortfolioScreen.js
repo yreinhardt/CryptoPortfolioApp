@@ -23,20 +23,22 @@ const PortfolioScreen = ({ navigation }) => {
     }
 
     const handleListRender = ({item}) => {
-        // true = show modified list with delete icon
-        if (deleteToggled){
-            return (
-                <DeleteUserPortfolios portfolio={item} handleDelete={handleDeletePortfolio} />
-              );
-        // false = rerender normal styled list of portfolios
-        } else {
-            return (
-                <UserPortfolios portfolio={item}/>
-              );
-        }
-      };
+      // true = show modified list with delete icon
+      if (deleteToggled){
+          return (
+              <DeleteUserPortfolios portfolio={item} handleDelete={handleDeletePortfolio} />
+            );
+      // false = rerender normal styled list of portfolios
+      } else {
+          return (
+              <UserPortfolios portfolio={item}/>
+          );
+      }
+    };
 
-    //        <Text style={styles.title}>Portfolio</Text>
+
+
+
 
       
   return(
@@ -62,7 +64,10 @@ const PortfolioScreen = ({ navigation }) => {
         <View style={{marginTop:15, flex:0.15, flexDirection: 'row',  marginBottom:15,justifyContent: 'center', alignItems:'center', width: 0.9*SCREEN.width }}>
             <TouchableOpacity
                         style={styles.button}
-                        onPress={() => navigation.navigate("NewPortfolio")} 
+                        onPress={() =>{
+                          navigation.navigate("NewPortfolio")
+                          setDeleteToggled(false)// ensure do close deletetoggled is false after screen change
+                        }} 
                     >
                     <Image source={AddIcon} style={styles.image} />
                     <Text style={{color:'white', fontSize: 14, fontWeight: 'bold'}}>Add</Text>

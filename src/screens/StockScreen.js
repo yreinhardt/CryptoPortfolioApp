@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from "react";
 import { View, StyleSheet,TouchableOpacity, FlatList } from "react-native";
-import { COLORS } from "../../constants/theme";
+import { COLORS, SCREEN } from "../../constants/theme";
 
 import HeaderStock from "../components/headerStock";
 import MarketCoins from "../components/MarketCoins"
@@ -87,7 +87,7 @@ const styles = StyleSheet.create({
   },
   list: {
     //flex:1/2,
-    width: "100%",
+    width: 0.9*SCREEN.width,
     height: '40%'
   },
 

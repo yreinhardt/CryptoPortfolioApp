@@ -38,6 +38,22 @@
 		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = cryptoPortfolioApp/Info.plist; sourceTree = "<group>"; };
 		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = cryptoPortfolioApp/main.m; sourceTree = "<group>"; };
 		194B0D2927A703EB001C305B /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		194B0D2C27C51503001C305B /* Fontisto.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Fontisto.ttf; sourceTree = "<group>"; };
+		194B0D2D27C51503001C305B /* Octicons.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Octicons.ttf; sourceTree = "<group>"; };
+		194B0D2E27C51503001C305B /* Feather.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Feather.ttf; sourceTree = "<group>"; };
+		194B0D2F27C51503001C305B /* Entypo.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Entypo.ttf; sourceTree = "<group>"; };
+		194B0D3027C51503001C305B /* FontAwesome5_Brands.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = FontAwesome5_Brands.ttf; sourceTree = "<group>"; };
+		194B0D3127C51503001C305B /* MaterialCommunityIcons.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = MaterialCommunityIcons.ttf; sourceTree = "<group>"; };
+		194B0D3227C51503001C305B /* AntDesign.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = AntDesign.ttf; sourceTree = "<group>"; };
+		194B0D3327C51503001C305B /* Foundation.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Foundation.ttf; sourceTree = "<group>"; };
+		194B0D3427C51503001C305B /* Ionicons.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Ionicons.ttf; sourceTree = "<group>"; };
+		194B0D3527C51503001C305B /* FontAwesome5_Solid.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = FontAwesome5_Solid.ttf; sourceTree = "<group>"; };
+		194B0D3627C51503001C305B /* FontAwesome5_Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = FontAwesome5_Regular.ttf; sourceTree = "<group>"; };
+		194B0D3727C51503001C305B /* FontAwesome.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = FontAwesome.ttf; sourceTree = "<group>"; };
+		194B0D3827C51503001C305B /* Zocial.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Zocial.ttf; sourceTree = "<group>"; };
+		194B0D3927C51503001C305B /* EvilIcons.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = EvilIcons.ttf; sourceTree = "<group>"; };
+		194B0D3A27C51503001C305B /* SimpleLineIcons.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = SimpleLineIcons.ttf; sourceTree = "<group>"; };
+		194B0D3B27C51503001C305B /* MaterialIcons.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = MaterialIcons.ttf; sourceTree = "<group>"; };
 		43B89A1A7734795CA4BB9F56 /* libPods-cryptoPortfolioApp-cryptoPortfolioAppTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-cryptoPortfolioApp-cryptoPortfolioAppTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		54CF27579B8A2C21EDF7C722 /* Pods-cryptoPortfolioApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-cryptoPortfolioApp.release.xcconfig"; path = "Target Support Files/Pods-cryptoPortfolioApp/Pods-cryptoPortfolioApp.release.xcconfig"; sourceTree = "<group>"; };
 		5BE36B016D7E716E5D0829DD /* Pods-cryptoPortfolioApp-cryptoPortfolioAppTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-cryptoPortfolioApp-cryptoPortfolioAppTests.release.xcconfig"; path = "Target Support Files/Pods-cryptoPortfolioApp-cryptoPortfolioAppTests/Pods-cryptoPortfolioApp-cryptoPortfolioAppTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -99,6 +115,30 @@
 			name = cryptoPortfolioApp;
 			sourceTree = "<group>";
 		};
+		194B0D2B27C51503001C305B /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				194B0D2C27C51503001C305B /* Fontisto.ttf */,
+				194B0D2D27C51503001C305B /* Octicons.ttf */,
+				194B0D2E27C51503001C305B /* Feather.ttf */,
+				194B0D2F27C51503001C305B /* Entypo.ttf */,
+				194B0D3027C51503001C305B /* FontAwesome5_Brands.ttf */,
+				194B0D3127C51503001C305B /* MaterialCommunityIcons.ttf */,
+				194B0D3227C51503001C305B /* AntDesign.ttf */,
+				194B0D3327C51503001C305B /* Foundation.ttf */,
+				194B0D3427C51503001C305B /* Ionicons.ttf */,
+				194B0D3527C51503001C305B /* FontAwesome5_Solid.ttf */,
+				194B0D3627C51503001C305B /* FontAwesome5_Regular.ttf */,
+				194B0D3727C51503001C305B /* FontAwesome.ttf */,
+				194B0D3827C51503001C305B /* Zocial.ttf */,
+				194B0D3927C51503001C305B /* EvilIcons.ttf */,
+				194B0D3A27C51503001C305B /* SimpleLineIcons.ttf */,
+				194B0D3B27C51503001C305B /* MaterialIcons.ttf */,
+			);
+			name = Fonts;
+			path = "../node_modules/react-native-vector-icons/Fonts";
+			sourceTree = "<group>";
+		};
 		1A5FD41870BA83AD0F56F791 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -130,6 +170,7 @@
 		83CBB9F61A601CBA00E9B192 = {
 			isa = PBXGroup;
 			children = (
+				194B0D2B27C51503001C305B /* Fonts */,
 				13B07FAE1A68108700A75B9A /* cryptoPortfolioApp */,
 				832341AE1AAA6A7D00B99B32 /* Libraries */,
 				00E356EF1AD99517003FC87E /* cryptoPortfolioAppTests */,

@@ -1,5 +1,5 @@
 import React from "react";
-import { View, Text, StyleSheet, Image } from "react-native";
+import { View, Text, StyleSheet, Image, Alert } from "react-native";
 import { COLORS, SCREEN } from "../../constants/theme"
 import DeleteIcon from "../../assets/icons/delete.png"
 import { TouchableOpacity } from "react-native-gesture-handler";
@@ -9,6 +9,28 @@ const DeleteUserPortfolios = ({ portfolio, handleDelete }) => {
     const handleDeletePortfolio = (value) =>{
         handleDelete(value)
     }
+
+      // alert button to delete portfolio, pass delete true if deletion is confirmed
+    const createDeleteAlertButton = () =>
+      Alert.alert(
+        "Delete Portfolio",
+        "Are you sure you want to delete the portfolio? The data is lost after that!",
+        [
+          {
+            text: "Cancel",
+            onPress: () => console.log("Cancel Pressed"),
+            style: "cancel"
+          },
+          {
+            text: "Delete", 
+            onPress: () => {
+              handleDeletePortfolio(true);
+              console.log("OK Pressed")
+            },
+            style: "destructive"
+          }
+        ]
+    );
 
     return(
     <View style={styles.containerItem}>
@@ -23,7 +45,8 @@ const DeleteUserPortfolios = ({ portfolio, handleDelete }) => {
                 </View>
             </View>
             <View style={{flex:0.2, alignItems: 'flex-end',justifyContent: 'center', marginRight: 10}}>
-                <TouchableOpacity onPress={()=>handleDeletePortfolio(true)}>
+                <TouchableOpacity 
+                  onPress={()=>{createDeleteAlertButton();}}>
                     <Image source={DeleteIcon} style={styles.image} />
                 </TouchableOpacity>
             </View>
