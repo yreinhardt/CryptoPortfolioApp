@@ -1,29 +1,9 @@
 import React, {useState} from "react";
 import { TextInput, KeyboardAvoidingView, View, TouchableOpacity, StyleSheet, Text, SafeAreaView, Image } from "react-native";
 import { COLORS, SCREEN } from "../../constants/theme"
-
 import IconSocialLogin from 'react-native-vector-icons/AntDesign';
-import IconLogin from 'react-native-vector-icons/MaterialCommunityIcons';
+import LogoIcon from "../../assets/icons/logo_cryptolio.png"
 
-
-/*
-import {
-  GoogleSignin,
-  GoogleSigninButton,
-  statusCodes,
-} from '@react-native-community/google-signin';
-
-const CLIENT_ID = process.CLIENT_ID
-
-GoogleSignin.configure({
-  webClientId: CLIENT_ID,
-});
-      <GoogleSigninButton
-        style={{ width: 192, height: 48 }}
-        size={GoogleSigninButton.Size.Wide}
-        color={GoogleSigninButton.Color.Dark}
-     />
-*/
 
 
 const LogInScreen = ({ navigation }) => {
@@ -34,17 +14,18 @@ const LogInScreen = ({ navigation }) => {
 
   return(
     <SafeAreaView style={styles.container}>
-      <View style={{flex:0.3, width: SCREEN.width,backgroundColor: COLORS.background, justifyContent: "center", alignItems:"center"}}>
-        <Text style={{color:"white"}}>Cryptolio Logo</Text>
+      <View style={{flex:0.4, width: SCREEN.width,backgroundColor: COLORS.background, justifyContent: "center", alignItems:"center"}}>
+        <Image source={LogoIcon} style={{height: 95, width: 350, marginHorizontal:20}}/>
+
       </View>
-      <KeyboardAvoidingView  behavior="padding" style={{flex:0.7,width: SCREEN.width, backgroundColor: COLORS.surface,
+      <KeyboardAvoidingView  behavior="padding" style={{flex:0.6,width: SCREEN.width, backgroundColor: COLORS.surface,
             borderTopLeftRadius: 30, borderTopRightRadius: 30, justifyContent: "center", alignItems:"center"}}>
         <View style={{flex:0.25,marginTop: 5, width: 0.9*SCREEN.width}}>
-          <Text style={{color:"white", fontSize: 30 ,fontWeight: "bold"}}> Welcome</Text>
+          <Text style={{color:"white", fontSize: 28 ,fontWeight: "bold"}}>Welcome</Text>
           <View style={{marginTop: 10, flexDirection: "row", justifyContent: "flex-start", alignItems:"flex-start",}}>
             <Text style={{color:"white", fontSize: 14}}> Don't have an Account?</Text>
-            <TouchableOpacity  onPress= {()=>navigation.navigate("SignUpScreen")}>
-              <Text style={{color:"yellow", fontSize: 14 , fontStyle: 'italic'}}> Sing up now!</Text>
+            <TouchableOpacity onPress= {()=>navigation.navigate("SignUpScreen")}>
+              <Text style={{color:COLORS.primary, fontSize: 14 , fontStyle: 'italic'}}> Sing up now!</Text>
             </TouchableOpacity>
           </View>
         </View>
@@ -74,12 +55,12 @@ const LogInScreen = ({ navigation }) => {
             <Text style={{color:"white", fontWeight: "bold", marginVertical: 15,}}>Or social Login</Text>
 
             <View style={{flexDirection: 'row' ,justifyContent: "space-evenly", alignItems:"center",
-                  width: 0.9*SCREEN.width, backgroundColor: COLORS.surface, borderRadius:5, height: 50}}>
+                  width: 0.9*SCREEN.width, backgroundColor: COLORS.surface, borderRadius:5, height: 50, marginTop:10}}>
               <TouchableOpacity>
                 <IconSocialLogin
                     name={"google"}
                     size={40}
-                    color={"yellow"}>
+                    color={COLORS.primary}>
                 </IconSocialLogin>
               </TouchableOpacity>
 
@@ -87,7 +68,7 @@ const LogInScreen = ({ navigation }) => {
                 <IconSocialLogin
                     name={"apple1"}
                     size={40}
-                    color={"yellow"}>
+                    color={COLORS.primary}>
                 </IconSocialLogin>
               </TouchableOpacity>
                 
@@ -95,7 +76,7 @@ const LogInScreen = ({ navigation }) => {
                 <IconSocialLogin
                   name={"twitter"}
                   size={40}
-                  color={"yellow"}>
+                  color={COLORS.primary}>
                 </IconSocialLogin>
               </TouchableOpacity>
             </View>
@@ -125,7 +106,7 @@ const styles = StyleSheet.create({
     borderRadius: 5,
   },
   button:{
-    backgroundColor: COLORS.onBackground,
+    backgroundColor: "#32CD32", //COLORS.onBackground,
     width: 0.9*SCREEN.width,
     padding: 15,
     borderRadius: 5,
